@@ -1,0 +1,11 @@
+tumor	tcgaPrimary	targetPrimary	GTEX	tcgaAdjacent	targetAdjacent	Autoencode
+LUAD.6	41	0	288	109	0	0
+LUAD.1	22	0	288	109	0	0
+LUAD.2	32	0	288	109	0	0
+LUAD.3	51	0	288	109	0	0
+LUAD.4	32	0	288	109	0	0
+LUAD.5	51	0	288	109	0	0
+LUSC.classical	64	0	288	109	0	0
+LUSC.secretory	43	0	288	109	0	0
+LUSC.basal	42	0	288	109	0	0
+LUSC.primitive	27	0	288	109	0	0
