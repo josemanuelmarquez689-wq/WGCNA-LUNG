@@ -1,32 +1,63 @@
 # --- FASE 1: PRE-PROCESAMIENTO (TCGA TUMOR VS ADYACENTE) ---
 
-# 1. Cargar librerías
-library(WGCNA)
 
-datos_expresion <- read.delim("LUNG_subtypes_summary.tsv", header = TRUE, row.names = 1)
+library(TCGAbiolinks)
+library(SummarizedExperiment)
 
-# Filtramos usando los códigos de vial de TCGA
-indices_tumor <- grepl("-01A|-01B", nombres_muestras) # Tumor primario
-indices_sano  <- grepl("-11A|-11B", nombres_muestras) # Tejido adyacente
-d
-# 3. Crear las sub-matrices
-datExpr_Tumor_raw <- datos_expresion[, indices_tumor]
-datExpr_Sano_raw  <- datos_expresion[, indices_sano]
+# --- PASO 1: Consultar los datos en el GDC ---
+# Filtramos por Proyecto (LUAD) y por el pipeline oficial 'STAR - Counts'
+query_luad <- GDCquery(
+  project = "TCGA-LUAD",
+  data.category = "Transcriptome Profiling",
+  data.type = "Gene Expression Quantification",
+  workflow.type = "STAR - Counts" 
+)
 
-# 4. Transponer para cumplir con el formato WGCNA (Muestras como filas)
-datExpr_Tumor <- as.data.frame(t(datExpr_Tumor_raw))
-datExpr_Sano  <- as.data.frame(t(datExpr_Sano_raw))
+# 2. Descargar los datos a tu carpeta de trabajo
+# Se creará una carpeta llamada 'GDCdata' automáticamente
+GDCdownload(query_luad)
 
-# 5. Verificación de seguridad
-print(paste("Muestras de Tumor (tcgaPrimary):", nrow(datExpr_Tumor)))
-print(paste("Muestras Adyacentes (tcgaAdjacent):", nrow(datExpr_Sano)))
+# --- PASO 3: Preparar el objeto en R ---
+data_luad <- GDCprepare(query_luad)
 
-# 6. Limpieza de genes con WGCNA
-library(WGCNA)
-gsg_t <- goodSamplesGenes(datExpr_Tumor, verbose = 3)
-gsg_s <- goodSamplesGenes(datExpr_Sano, verbose = 3)
+# 4. Extraer la Matriz de Expresión en escala TPM
+# El TPM es ideal para WGCNA porque ya está normalizado
+matriz_tpm <- assay(data_luad, "tpm_unstrand")<- assay(data_luad, "tpm_unstrand")
 
-if (!gsg_t$allOK) datExpr_Tumor = datExpr_Tumor[gsg_t$goodSamples, gsg_t$goodGenes]
-if (!gsg_s$allOK) datExpr_Sano = datExpr_Sano[gsg_s$goodSamples, gsg_s$goodGenes]
+# 5. Identificar y Separar Grupos (Tumor vs Adyacente)
+# Usamos los metadatos internos de TCGAbiolinks
+metadatos <- colData(data_luad)
 
-save(datExpr_Tumor, datExpr_Sano, file = "Datos_Filtrados_TCGA.RData")
+# TP = Tumor Primario (Código 01) | NT = Normal Tissue / Adyacente (Código 11)
+datExpr_Tumor_raw <- matriz_tpm[, metadatos$shortLetterCode == "TP"]
+datExpr_Sano_raw  <- matriz_tpm[, metadatos$shortLetterCode == "NT"]
+
+# 6. Verificación de seguridad
+print(paste("Muestras de Tumor (TP) detectadas:", ncol(datExpr_Tumor_raw)))
+print(paste("Muestras Adyacentes (NT) detectadas:", ncol(datExpr_Sano_raw)))
+
+# Guardamos el avance en un archivo .RData para no repetir la descarga
+save(datExpr_Tumor_raw, datExpr_Sano_raw, file = "Datos_TCGA_LUAD_Fase1.RData")
+
+
+#Separamos por estadio
+
+# 1. Obtener los nombres de las muestras que REALMENTE están en tu matriz de tumor
+muestras_en_matriz <- colnames(datExpr_Tumor_final)
+
+# 2. Filtrar los metadatos para que SOLO tengan esas muestras
+metadatos_filtrados <- colData(data_luad)[muestras_en_matriz, ]
+
+# 3. Ahora sí, crear los índices sobre los metadatos sincronizados
+# Buscamos 'Stage I' (incluyendo IA e IB)
+indices_reales_I <- grepl("Stage I$|Stage IA|Stage IB", metadatos_filtrados$ajcc_pathologic_stage)
+
+# 4. Extraer la matriz final para el Estadio I
+datExpr_StageI <- datExpr_Tumor_final[, indices_reales_I]
+
+# 5. Verificación de éxito
+print(paste("Muestras de Estadio I sincronizadas:", ncol(datExpr_StageI)))
+
+
+
+
