@@ -1,0 +1,25 @@
+"Modulo","Mediana_Hubs_3a7","Criticidad","Conservacion_1H"
+"DARKTURQUOISE",0.014,"Extremadamente Critico",0.737
+"DARKRED",0.017,"Extremadamente Critico",0.017
+"DARKGREEN",0.017,"Extremadamente Critico",0.02
+"CYAN",0.029,"Extremadamente Critico",0.314
+"PURPLE",0.048,"Extremadamente Critico",0.452
+"BLACK",0.052,"Extremadamente Critico",0.244
+"SALMON",0.057,"Extremadamente Critico",0.058
+"LIGHTYELLOW",0.062,"Extremadamente Critico",0.081
+"DARKGREY",0.07,"Extremadamente Critico",0.067
+"MAGENTA",0.094,"Extremadamente Critico",0.098
+"BROWN",0.116,"Extremadamente Critico",0.127
+"LIGHTCYAN",0.126,"Extremadamente Critico",0.136
+"BLUE",0.157,"Extremadamente Critico",0.165
+"MIDNIGHTBLUE",0.166,"Extremadamente Critico",0.19
+"YELLOW",0.21,"Extremadamente Critico",0.231
+"PINK",0.275,"Extremadamente Critico",0.28
+"TURQUOISE",0.398,"Critico",0.418
+"GREENYELLOW",0.417,"Critico",0.464
+"RED",0.467,"Critico",0.502
+"GREY60",0.667,"Moderado",0.264
+"ROYALBLUE",0.709,"Robusto",0.689
+"LIGHTGREEN",0.75,"Robusto",0.694
+"GREEN",0.848,"Robusto",0.82
+"TAN",0.852,"Robusto",0.871

@@ -1,0 +1,32 @@
+           used  (Mb) gc trigger   (Mb)  max used   (Mb)
+Ncells  2221150 118.7    4065498  217.2   3159688  168.8
+Vcells 30160032 230.2  162624033 1240.8 192662609 1469.9
+Red original: umbral TOM=0.0226, E=0.1643, LCC=3723, componentes=49, aristas=124975
+Ataques: 456 | Controles al azar: 1350 (45 tamanos x 30 rep)
+Tiempo: 9.1 min
+        Modulo Tamano Eficiencia_15H Z_medio_1a15H Z_medio_pct Celdas_signif
+         BROWN    185          0.893         31.08       28.15            19
+          BLUE    243          0.959          9.30       15.46            17
+           RED    140          0.972          4.98        6.69            16
+        YELLOW    179          0.978          4.44        3.86            15
+        PURPLE     67          0.985          3.54        3.29            11
+     TURQUOISE    265          0.982          2.57        6.08             9
+          PINK    104          0.985          2.51        1.32             6
+        SALMON     53          0.989          2.20        1.40             5
+         BLACK    106          0.984          1.99        1.38             6
+    LIGHTGREEN     47          0.986          1.95        1.14             5
+       MAGENTA     90          0.986          1.88        2.07             3
+     LIGHTCYAN     51          0.988          1.82        1.02             4
+        GREY60     49          0.986          1.77        0.66             5
+   LIGHTYELLOW     46          0.991          1.32        0.52             2
+   GREENYELLOW     57          0.989          1.03        1.18             0
+         GREEN    143          0.988          1.01        2.20             3
+ DARKTURQUOISE     31          0.991          0.90        0.48             0
+       DARKRED     39          0.991          0.85        0.80             0
+     DARKGREEN     32          0.989          0.78        0.37             0
+           TAN     57          0.991          0.66        0.54             0
+      DARKGREY     30          0.992          0.65        0.11             0
+     ROYALBLUE     43          0.991          0.57        0.88             0
+  MIDNIGHTBLUE     51          0.991          0.54        0.09             0
+          CYAN     52          0.990          0.51        0.16             0
+LISTO

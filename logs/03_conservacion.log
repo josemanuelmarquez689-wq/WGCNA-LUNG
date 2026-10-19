@@ -1,0 +1,28 @@
+Re-clusterizando 456 redes alteradas con 20 nucleos...
+Tiempo: 1.9 min
+        Modulo Tamano Jaccard_Maximo Ataque
+           TAN     57          0.871    1 H
+         GREEN    143          0.853    8 H
+        GREY60     49          0.787   10 H
+    LIGHTGREEN     47          0.773    7 H
+ DARKTURQUOISE     31          0.737    1 H
+     ROYALBLUE     43          0.725    6 H
+           RED    140          0.519    4 H
+        PURPLE     67          0.468    2 H
+     TURQUOISE    265          0.468    2 H
+   GREENYELLOW     57          0.464    1 H
+          CYAN     52          0.314    1 H
+  MIDNIGHTBLUE     51          0.312    2 H
+          PINK    104          0.282    3 H
+         BLACK    106          0.244    1 H
+        YELLOW    179          0.236    10%
+          BLUE    243          0.175   12 H
+      DARKGREY     30          0.167    9 H
+     LIGHTCYAN     51          0.151    2 H
+   LIGHTYELLOW     46          0.136   15 H
+         BROWN    185          0.128   11 H
+       MAGENTA     90          0.102    3 H
+        SALMON     53          0.060    4 H
+       DARKRED     39          0.022    6 H
+     DARKGREEN     32          0.020    1 H
+LISTO
